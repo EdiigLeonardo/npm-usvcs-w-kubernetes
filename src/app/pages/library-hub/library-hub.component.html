@@ -1,0 +1,42 @@
+<title>Library Info Hub</title>
+<div class="library-grid2">
+  <div class="form-control">
+    <input placeholder="Search" class="input-user" aria-label="input de pesquisar"
+    [(ngModel)]="inputValue" (keydown)="onKeyDown($event)"/>
+  </div>
+  <div class="status">
+    <div class="status-info">
+      <h2 class="status-header">name</h2>
+      <span class="status-info_-_details">{{libraryInfo.name}}</span>
+    </div>
+    <div class="status-info">
+      <h2 class="status-header">description</h2>
+      <span class="status-info_-_details">{{libraryInfo.description}}</span>
+    </div>
+    <div class="status-info">
+      <h2 class="status-header">Dist Tags</h2>
+      <span class="status-info_-_details">{{libraryInfo.distTags}}</span>
+    </div>
+    <div class="status-info">
+      <h2 class="status-header">latest version</h2>
+      <span class="status-info_-_details">{{libraryInfo.latest}}</span>
+    </div>
+    <div class="status-info">
+      <h2 class="status-header"> homepage</h2>
+      <span class="status-info_-_details">{{libraryInfo.homepage}}</span>
+    </div>
+    <div class="status-info">
+      <h2 class="status-header"> License for Latest Version</h2>
+      <span class="status-info_-_details">{{libraryInfo.license}}</span>
+    </div>
+  </div>
+  <div class="btn_-_list">
+    <a routerLink="/">
+      <button type="button" class="btn a" id="home-page-btn-2">Home Page</button>
+    </a>
+    <a routerLink="/search">
+      <button type="button" class="btn a" id="library-search-btn-2">Npm Library Search Page</button>
+    </a>
+  </div>
+</div>
+

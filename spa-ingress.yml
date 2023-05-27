@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: spa-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - host: spa.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: spa
+            port:
+              number: 3000
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - spa.local
+    secretName: k3s-tls-spa-local

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: angular-app
+  name: angular-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: angular-app
+  template:
+    metadata:
+      labels:
+        app: angular-app
+    spec:
+      containers:
+      - image: localhost:5000/angular-app-image
+        name: angular-app
+      imagePullSecrets:
+        - name: docker-registry-creds
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: angular-app
+  name: angular-app
+spec:
+  ports:
+  - port: 4200
+    protocol: TCP
+    targetPort: 4200
+  selector:
+    app: angular-app
+  type: NodePort

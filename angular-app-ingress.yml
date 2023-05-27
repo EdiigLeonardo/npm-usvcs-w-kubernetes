@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: angular-app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - host: angular-app.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: angular-app
+            port:
+              number: 4200
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - angular-app.local
+    secretName: k3s-tls-angular-app-local

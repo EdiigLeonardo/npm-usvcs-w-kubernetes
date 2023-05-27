@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: spa
+  name: spa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spa
+  template:
+    metadata:
+      labels:
+        app: spa
+    spec:
+      containers:
+      - image: localhost:5000/spa-image
+        name: spa
+      imagePullSecrets:
+        - name: docker-registry-creds
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: spa
+  name: spa
+spec:
+  ports:
+  - port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: spa
+  type: NodePort
+

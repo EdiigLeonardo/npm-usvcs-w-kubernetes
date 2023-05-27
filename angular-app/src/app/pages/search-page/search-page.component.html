@@ -1,0 +1,32 @@
+<title>Npm Library Search</title>
+<div class="library-grid2">
+  <div class="form-control">
+    <input placeholder="Search" class="input-user" aria-label="input de pesquisar"
+    [(ngModel)]="inputValue" (keydown)="onKeyDown($event)">
+  </div>
+  <div class="status">
+    <div class="status-info">
+      <h2 class="status-header">Package_name</h2>
+      <span class="status-info_-_details">{{libraryInfo.packageName}}</span>
+    </div>
+    <div class="status-info">
+      <h2 class="status-header">Package_description</h2>
+      <span class="status-info_-_details">{{libraryInfo.packageDescription}}</span>
+    </div>
+    <div class="status-info">
+      <h2 class="status-header">Package Keywords</h2>
+        <ul>
+        <li *ngFor="let value of libraryInfo.packageDescription" class="status-info_-_details">{{value}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="btn_-_list">
+    <a routerLink="/">
+      <button type="button" class="btn a" id="home-page-btn-2">Home Page</button>
+    </a>
+    <a routerLink="/npmstatus">
+      <button type="button" class="btn a" id="npm-resgistry-btn">Npm Registry Status Monitor</button>
+    </a>
+  </div>
+</div>
+
